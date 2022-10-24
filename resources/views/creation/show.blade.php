@@ -22,6 +22,17 @@
             <p class="flex items-end m-3"> {{$creation->Price / 100}} €</p>
         </div>
         
+
+        <div>
+            <form action="{{ route('cart.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{ $creation->id}}">
+                <input type="hidden" name="Name" value="{{ $creation->Name}}">
+                <input type="hidden" name="Price" value="{{ $creation->Price}}">
+
+                <button type="submit" class="btn btn-dark">Ajouter au panier</button>
+            </form>
+        </div>
     </div>
    
 

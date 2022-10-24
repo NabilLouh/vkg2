@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CreationController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\HomeController;
@@ -32,6 +33,10 @@ Route::get('/creation', [CreationController::class, 'index'])->name('create');
 Route::get('/creation/{creation}', [CreationController::class, 'show'])->name('creations.show');
 
 Route::get('/devis', [DevisController::class, 'index'])->name('devis');
+
+
+Route::post('/panier/ajouter', [CartController::class, 'store'])->name('cart.store');
+
 
 
 Route::get('/user/{user}', [UserController::class, 'index'])->middleware(['auth'])->name('user');

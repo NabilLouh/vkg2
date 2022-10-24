@@ -5,6 +5,7 @@
 @section('content')
 
 
+
 <div class="bg-white w-4/5 m-auto flex">
     <div>
         <img src="{{$product->cover}}" alt="">
@@ -20,6 +21,17 @@
         
         <div>
             <p class="flex items-end m-3"> {{$product->Price / 100}} €</p>
+        </div>
+
+        <div>
+            <form action="{{ route('cart.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{ $product->id}}">
+                <input type="hidden" name="Name" value="{{ $product->Name}}">
+                <input type="hidden" name="Price" value="{{ $product->Price}}">
+
+                <button type="submit" class="btn btn-dark">Ajouter au panier</button>
+            </form>
         </div>
         
     </div>
