@@ -8,6 +8,7 @@ use App\Http\Controllers\CreationController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +35,12 @@ Route::get('/creation/{creation}', [CreationController::class, 'show'])->name('c
 
 Route::get('/devis', [DevisController::class, 'index'])->name('devis');
 
-
+Route::get('/mon-panier', [CartController::class, 'index'])->name('cart');
 Route::post('/panier/ajouter', [CartController::class, 'store'])->name('cart.store');
+Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::get('/videpanier', function () {
+    Cart::destroy();
+});
 
 
 
