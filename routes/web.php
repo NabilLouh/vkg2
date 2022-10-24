@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CreationController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\HomeController;
@@ -41,6 +42,9 @@ Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->name('cart
 Route::get('/videpanier', function () {
     Cart::destroy();
 });
+
+
+Route::get('/paiement', [CheckoutController::class, 'index'])->name('checkout.index');
 
 
 

@@ -52,6 +52,9 @@
             </tbody>
         </table>
 
+
+        <a href="{{ route('checkout.index') }}"> Passer à la caisse </a>
+
     @else
         <p>Votre Panier est vide.</p>
     @endif

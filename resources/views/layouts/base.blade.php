@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VKG</title>
 
+
+    @yield('extra-script')
+
+
     @vite('resources/css/app.css')
 </head>
 <body id="app">
@@ -79,6 +83,7 @@
 </div>
 
 
+    @yield('extra-js')
     @vite('resources/js/app.js')
 </body>
 </html>
