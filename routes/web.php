@@ -46,9 +46,7 @@ Route::get('/videpanier', function () {
 
 Route::get('/paiement', [CheckoutController::class, 'index'])->middleware(['auth'])->name('checkout.index');
 Route::post('/paiement', [CheckoutController::class, 'store'])->middleware(['auth'])->name('checkout.store');
-Route::get('/merci', function() {
-    return view('checkout.thankyou');
-});
+Route::get('/merci', [CheckoutController::class, 'thankYou'])->middleware(['auth'])->name('checkout.thankYou');;
 
 
 

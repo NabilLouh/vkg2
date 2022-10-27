@@ -18,8 +18,9 @@
     <div >
         <div >
             <form action=" {{ route('checkout.store') }}" method="POST" id="payment-form" classe="my-4">
+                @csrf
                 <div id="card-element">
-                    @csrf
+                   
                 <!-- Elements will create input elements here -->
                 </div>
 
@@ -70,6 +71,7 @@
     submitButton.addEventListener('click', function(ev) {
     ev.preventDefault();
     submitButton.disabled = true;
+
     stripe.confirmCardPayment("{{ $clientSecret }}", {
         payment_method: {
             card: card
@@ -83,9 +85,11 @@
                 // The payment has been processed!
                 if (result.paymentIntent.status === 'succeeded') {
                     var paymentIntent = result.paymentIntent;
-                    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                     var form = document.getElementById('payment-form');
+                   
                     var url = form.action;
+                    
                     var redirect = '/merci';
 
                     fetch(
