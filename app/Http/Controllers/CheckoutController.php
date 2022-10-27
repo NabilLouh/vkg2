@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 
@@ -17,10 +19,17 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+
+        if (Cart::count() <= 0) {
+            return redirect()->route('home');
+        }
         Stripe::setApiKey('sk_test_51LwRvyGm0FBUZE3XjpQljbBnFygZ9zovVYMTp9qidSYmgfSmWmnqeAZ71hnNt87i6rw3nkvrogcgoXFgoewpDQEV004vopMtT4');
         $intent = PaymentIntent::create([
-            'amount' => round(Cart::total()),
-            'currency' => 'eur'
+            'amount' => round(floatval(Cart::total())),
+            'currency' => 'eur',
+            'metadata' => [
+                'userId' => Auth::user()->id
+            ]
         ]);
 
         $clientSecret = Arr::get($intent, 'client_secret');
@@ -47,7 +56,10 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::destroy();
+        $data = $request->json()->all();
+
+        return $data['paymentIntent'];
     }
 
     /**

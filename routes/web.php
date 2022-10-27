@@ -36,15 +36,19 @@ Route::get('/creation/{creation}', [CreationController::class, 'show'])->name('c
 
 Route::get('/devis', [DevisController::class, 'index'])->name('devis');
 
-Route::get('/mon-panier', [CartController::class, 'index'])->name('cart');
-Route::post('/panier/ajouter', [CartController::class, 'store'])->name('cart.store');
-Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::get('/mon-panier', [CartController::class, 'index'])->middleware(['auth'])->name('cart');
+Route::post('/panier/ajouter', [CartController::class, 'store'])->middleware(['auth'])->name('cart.store');
+Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->middleware(['auth'])->name('cart.destroy');
 Route::get('/videpanier', function () {
     Cart::destroy();
 });
 
 
-Route::get('/paiement', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::get('/paiement', [CheckoutController::class, 'index'])->middleware(['auth'])->name('checkout.index');
+Route::post('/paiement', [CheckoutController::class, 'store'])->middleware(['auth'])->name('checkout.store');
+Route::get('/merci', function() {
+    return view('checkout.thankyou');
+});
 
 
 

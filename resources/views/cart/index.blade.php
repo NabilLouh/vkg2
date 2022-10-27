@@ -34,7 +34,7 @@
                     </th>
                   
                     <td>{{$product->price / 100}} €</td>
-                    <td>3</td>
+                    <td></td>
                     <td>
                         <form action=" {{ route('cart.destroy', $product->rowId) }}" method="POST">
                             @csrf
@@ -52,11 +52,21 @@
             </tbody>
         </table>
 
+        <div>
+            Details de la commande
+        </div>
+        <ul>
+            <li><strong>Sous-total : </strong><strong>{{ getPrice(Cart::subtotal())}}</strong></li>
+            <li><strong>Taxe : </strong><strong>{{ getPrice(Cart::tax())}}</strong></li>
+            <li><strong>Total : </strong><strong>{{ getPrice(Cart::total() )}}</strong> </li>
+        </ul>
+
 
         <a href="{{ route('checkout.index') }}"> Passer à la caisse </a>
 
     @else
         <p>Votre Panier est vide.</p>
+      
     @endif
 
 
