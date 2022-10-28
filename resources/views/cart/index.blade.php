@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
-
+@section('extra-meta')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 
 @section('content')
 
@@ -33,8 +35,14 @@
                         <td>{{$product->name}}</td>
                     </th>
                   
-                    <td>{{$product->price / 100}} €</td>
-                    <td></td>
+                    <td>{{ getPrice( $product->subtotal()) }} </td>
+                    <td>
+                        <select name="qty" id="qty" data-id="{{$product->rowId}}">
+                            @for ($i = 1; $i < 101; $i++)
+                                <option value="{{ $i }}" {{ $i == $product->qty ? 'selected' : '' }}>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </td>
                     <td>
                         <form action=" {{ route('cart.destroy', $product->rowId) }}" method="POST">
                             @csrf
@@ -78,4 +86,36 @@
 
 
 
+@endsection
+
+
+@section('extra-js')
+<script>
+    var qty = document.querySelectorAll('#qty');
+   
+    Array.from(qty).forEach((element) => {
+        element.addEventListener('change', function () {
+            var rowId = element.getAttribute('data-id');
+            var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch(`/panier/${rowId}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json, text-plain, */*",
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRF-TOKEN": token
+                    },
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        qty: this.value
+                    })
+            }).then((data) => {
+                console.log(data);
+                location.reload();
+            }).catch((error) => {
+                console.log(error);
+            });
+        });
+    });
+</script>
 @endsection

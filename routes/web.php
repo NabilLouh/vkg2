@@ -38,6 +38,7 @@ Route::get('/devis', [DevisController::class, 'index'])->name('devis');
 
 Route::get('/mon-panier', [CartController::class, 'index'])->middleware(['auth'])->name('cart');
 Route::post('/panier/ajouter', [CartController::class, 'store'])->middleware(['auth'])->name('cart.store');
+Route::patch('/panier/{rowId}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->middleware(['auth'])->name('cart.destroy');
 Route::get('/videpanier', function () {
     Cart::destroy();

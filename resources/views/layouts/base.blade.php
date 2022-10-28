@@ -70,6 +70,14 @@
             {{ session('success') }}
         </div>
     @endif
+
+
+
+    @if (session('danger'))
+        <div>
+            {{ session('danger') }}
+        </div>
+    @endif
     
     @yield('content')
 
