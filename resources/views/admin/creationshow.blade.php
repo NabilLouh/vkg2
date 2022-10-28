@@ -7,7 +7,7 @@
     <div class="">
         <h1>Les Créations</h1>
 
-        <a href="{{route('admin.creationcreate')}}">Creer une Creation</a>
+        <a href="{{route('admin.create')}}">Creer une Creation</a>
 
 
 
@@ -30,9 +30,9 @@
                         <td class="p-2">{{$creation->Name}}</td>
                         <td class="p-2">{{$creation->Price}}</td>
                         <td class="p-2">
-                            <a href="{{ route('admin.creationedit', $creation)}}">Modifier</a>
+                            <a href="{{ route('admin.edit', $creation)}}">Modifier</a>
 
-                            <form action="{{ route('admin.creationdestroy', $creation)}}" method="post">
+                            <form action="{{ route('admin.destroy', $creation)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="">Supprimer</button>

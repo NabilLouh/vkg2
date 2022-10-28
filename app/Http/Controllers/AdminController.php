@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function show()
     {
         return view('admin.show', [
-            'products' => Product::all()
+            'products' => Product::where('is_creation', '=', 0)->get(),
         ]);
     }
     
@@ -67,18 +67,19 @@ class AdminController extends Controller
             'Description' => 'required|min:10',
             'Price' => 'required|min:100|max:3000|numeric',
             'cover' => 'nullable|image|max:2048',
+            'is_creation' => 'nullable|numeric|between:0,1'
         ]);
 
         if ($request->hasFile('cover')) {
             if ($product->cover) {
                 Storage::delete(str($product->cover)->remove('/storage/'));
             }
-            $validated['cover'] = '/storage/'.$request->file('cover')->store('covers');
+            $validated['cover'] = '/storage/'.$request->file('cover')->store('/covers');
         }
 
         $product->update(collect($validated)->all());
 
-        return redirect()->route('admin.show');
+        return redirect()->route('admin');
     }
 
     public function destroy(Product $product)
@@ -86,14 +87,14 @@ class AdminController extends Controller
         Storage::delete(Str($product->cover)->remove('/storage/'));
         $product->delete();
 
-        return redirect()->route('admin.show');
+        return redirect()->route('admin');
     }  
 
 
     public function creationshow()
     {
         return view('admin.creationshow', [
-            'creations' => Creation::all()
+            'creations' => Product::where('is_creation', '=', 1)->get(),
         ]);
     }
 
@@ -112,10 +113,11 @@ class AdminController extends Controller
             'Description' => 'required|min:10',
             'Price' => 'required|min:100|max:3000|numeric',
             'cover' => 'nullable|image|max:2048',
+            'is_creation' => 'nullable|numeric|between:0,1'
         ]);
 
         if ($request->hasFile('cover')) {
-            $validated['cover'] = '/storage/'.$request->file('cover')->store('covers');
+            $validated['cover'] = '/storage/'.$request->file('cover')->store('/covers');
         }
 
         $product = Creation::create(collect($validated)->all());
@@ -140,13 +142,14 @@ class AdminController extends Controller
             'Description' => 'required|min:10',
             'Price' => 'required|min:100|max:3000|numeric',
             'cover' => 'nullable|image|max:2048',
+            'is_creation' => 'nullable|numeric|between:0,1'
         ]);
 
         if ($request->hasFile('cover')) {
             if ($creation->cover) {
                 Storage::delete(str($creation->cover)->remove('/storage/'));
             }
-            $validated['cover'] = '/storage/'.$request->file('cover')->store('covers');
+            $validated['cover'] = '/storage/'.$request->file('cover')->store('/covers');
         }
 
         $creation->update(collect($validated)->all());

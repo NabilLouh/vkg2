@@ -40,7 +40,13 @@
     </div>
 
 
-
+    <div>
+        <label for="is_creation">Type : </label>
+        <select name="is_creation" id="is_creation">
+            <option value="0">Produit</option>
+            <option value="1">Creation</option>
+        </select>
+    </div>
 
 
     <button>Ajouter</button>
