@@ -7,28 +7,27 @@
 
 <div class="bg-white w-4/5 m-auto flex">
     <div>
-        <img src="{{$creation->cover}}" alt="">
+        <img src="{{$product->cover}}" alt="">
     </div>
     <div class="flex flex-col justify-between">
         <div>
-            <h1 class="m-3">{{$creation->Name}}</h1>
+            <h1 class="m-3">{{$product->Name}}</h1>
     
-            <p class="m-6">{{$creation->Description}}</p>
+            <p class="m-6">{{$product->Description}}</p>
     
     
         </div>
         
         <div>
-            <p class="flex items-end m-3"> {{$creation->Price / 100}} €</p>
+            <p class="flex items-end m-3"> {{$product->Price / 100}} €</p>
         </div>
         
 
         <div>
             <form action="{{ route('cart.store') }}" method="POST">
                 @csrf
-                <input type="hidden" name="id" value="{{ $creation->id}}">
-                <input type="hidden" name="Name" value="{{ $creation->Name}}">
-                <input type="hidden" name="Price" value="{{ $creation->Price}}">
+                <input type="hidden" name="product_id" value="{{ $product->id}}">
+               
 
                 <button type="submit" class="btn btn-dark">Ajouter au panier</button>
             </form>

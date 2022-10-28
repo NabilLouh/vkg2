@@ -15,6 +15,7 @@
             </div>
             <div>
                 <h1 class="m-3"> <a href="{{ route('products.show', $product) }}">{{$product->Name}}</a></h1>
+                
                 <p class="flex justify-end m-3"> {{$product->Price / 100}} €</p>
             </div>
         </div>

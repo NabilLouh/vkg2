@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('Description');
             $table->integer('Price');
             $table->string('cover')->nullable();
+            $table->boolean('is_creation')->nullable();
             $table->timestamps();
         });
     }

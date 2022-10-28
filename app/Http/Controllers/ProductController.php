@@ -12,7 +12,8 @@ class ProductController extends Controller
     {
        
         return view('products.index', [
-            'products' => Product::paginate(6)->withQueryString(),
+            'products' => Product::where('is_creation', '=', 0)
+                ->paginate(6)->withQueryString(),
         ]);
     }
 
