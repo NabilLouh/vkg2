@@ -36,10 +36,12 @@ class AdminController extends Controller
             'Description' => 'required|min:10',
             'Price' => 'required|min:100|max:3000|numeric',
             'cover' => 'nullable|image|max:2048',
+            'is_creation' => 'nullable|numeric|between:0,1'
         ]);
 
         if ($request->hasFile('cover')) {
-            $validated['cover'] = '/storage/'.$request->file('cover')->store('covers');
+            $validated['cover'] = '/storage/'.$request->file('cover')->store('/covers');
+           
         }
 
         $product = Product::create(collect($validated)->all());

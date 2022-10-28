@@ -11,7 +11,7 @@
 
         <div class="a bg-white min-h-64 w-1/4 mx-3 my-2">
             <div>
-                <img src="{{$product->cover}}" alt="">
+                <img  src="{{$product->cover}}" alt="">
             </div>
             <div>
                 <h1 class="m-3"> <a href="{{ route('products.show', $product) }}">{{$product->Name}}</a></h1>

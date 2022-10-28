@@ -36,7 +36,7 @@
         </div>
         
         <div>
-            <img class="w-32 h-32" src="{{ asset('storage/covers/logo_black_mode_.png') }}" alt="">
+            <img class="w-32 h-32" src="{{ asset('storage/public/logo/logo_black_mode_.png') }}" alt="">
         </div>
 
         <div>

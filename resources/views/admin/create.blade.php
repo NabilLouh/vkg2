@@ -38,6 +38,14 @@
         <input type="file" name="cover" id="cover" value="{{ old('cover') }}">
     </div>
 
+    <div>
+        <label for="is_creation">Type : </label>
+        <select name="is_creation" id="is_creation">
+            <option value="0">Produit</option>
+            <option value="1">Creation</option>
+        </select>
+    </div>
+
 
     <button class="m-3 bg-green-700 p-3">Ajouter</button>
 
