@@ -32,8 +32,8 @@
     <div class="flex">
         <div class="flex flex-col bg-gray-400 rounded-r-lg mt-5 mb-5">
             <a href="{{ route('user', $user) }}" class=" mx-3 h-20 flex items-center">Mes informations</a>
-            <a href="" class=" mx-3 h-20 flex items-center">Mes Commandes</a>
-            <a href="" class=" mx-3 h-20 flex items-center">Historique</a>
+            <a href="{{ route('user.show', $user) }}" class=" mx-3 h-20 flex items-center">Mes Commandes</a>
+            <a href="{{ route('user.histo', $user) }}" class=" mx-3 h-20 flex items-center">Historique</a>
             <a href="{{ route('home') }}" class=" mx-3 h-20 flex items-center">Accueil</a>
         </div>
     

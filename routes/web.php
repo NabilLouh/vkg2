@@ -8,6 +8,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CreationController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,8 @@ Route::get('/merci', [CheckoutController::class, 'thankYou'])->middleware(['auth
 Route::get('/user/{user}', [UserController::class, 'index'])->middleware(['auth'])->name('user');
 Route::put('/user/{user}', [UserController::class, 'update']);
 
+Route::get('/user/{user}/commande', [OrderController::class, 'show'])->middleware(['auth'])->name('user.show');
+Route::get('/user/{user}/historique', [OrderController::class, 'showhisto'])->middleware(['auth'])->name('user.histo');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['admin'])->name('admin');
 
@@ -63,6 +66,12 @@ Route::post('/admin/produit/create', [AdminController::class, 'store']);
 Route::get('/admin/produit/{product}/update', [AdminController::class, 'edit'])->middleware(['admin'])->name('admin.edit');
 Route::put('/admin/produit/{product}/update', [AdminController::class, 'update']);
 Route::delete('/admin/produit/{product}', [AdminController::class, 'destroy'])->middleware(['admin'])->name('admin.destroy');
+
+
+Route::get('/admin/commande', [AdminController::class, 'showOrder'])->middleware(['auth'])->name('admin.order');
+Route::get('/admin/commande/{order}/update', [AdminController::class, 'editOrder'])->middleware(['admin'])->name('admin.orderedit');
+Route::put('/admin/commande/{order}/update', [AdminController::class, 'updateOrder']);
+
 
 
 Route::get('/admin/creation', [AdminController::class, 'creationshow'])->middleware(['admin'])->name('admin.creationshow');

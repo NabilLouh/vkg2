@@ -20,6 +20,7 @@ return new class extends Migration
             $table->datetime('payment_created_at');
             $table->text('products');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('is_shipped')->nullable();
             $table->timestamps();
         });
     }

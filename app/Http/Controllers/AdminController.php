@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creation;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,6 +27,39 @@ class AdminController extends Controller
     public function create()
     {
         return view('admin.create');
+    }
+
+
+    public function showOrder()
+    {
+        return view('admin.order', [
+            'orders' => Order::all(),
+        ]);
+    }
+
+
+    public function editOrder(Order $order)
+    {
+
+       
+        return view('admin.editorder', [
+            'order' => $order
+            
+        ]);
+    }
+
+    public function updateOrder(Request $request, Order $order)
+    {
+        
+            $validated = $request->validate([
+                'is_shipped' => 'numeric|between:0,1',
+            ]);
+
+          
+            $order->update(collect($validated)->all());
+
+            return redirect()->route('admin.order');
+        
     }
 
     public function store(Request $request)
@@ -163,6 +197,9 @@ class AdminController extends Controller
         $creation->delete();
 
         return redirect()->route('admin.creationshow');
-    }    
+    }  
+    
+    
+   
     
 }

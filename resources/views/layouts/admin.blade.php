@@ -31,6 +31,7 @@
             <a href="{{ route('admin') }}" class=" mx-3 h-20 flex items-center">Dashboard</a>
             <a href="{{ route('admin.show') }}" class=" mx-3 h-20 flex items-center">Produit</a>
             <a href="{{ route('admin.creationshow') }}" class=" mx-3 h-20 flex items-center">Creation</a>
+            <a href="{{ route('admin.order') }}" class=" mx-3 h-20 flex items-center">Order</a>
             <a href="{{ route('home') }}" class=" mx-3 h-20 flex items-center">Accueil</a>
         </div>
     
