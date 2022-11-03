@@ -7,7 +7,7 @@
 <div class="flex justify-evenly my-16">
 
 
-    <div class="bg-white w-2/5 border-4 border-orange-500 rounded-lg">
+    <div class="bg-white w-2/5 border-4 border-orange-500 rounded-lg text-black">
        <h1> Nous somme les Power Ranger, justicier de l'an 2000</h1>
 
 
@@ -32,7 +32,7 @@
     </div>
 
 
-    <div class="bg-white w-2/5 border-4 border-orange-500 rounded-lg">
+    <div class="bg-white w-2/5 border-4 border-orange-500 rounded-lg text-black">
         <p>Pour toutes Question hors devis</p>
         <p>Merci de nous contacter au :</p>
         <div>

@@ -35,7 +35,8 @@ Route::get('/produit/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('/creation', [CreationController::class, 'index'])->name('create');
 Route::get('/creation/{creation}', [CreationController::class, 'show'])->name('creations.show');
 
-Route::get('/devis', [DevisController::class, 'index'])->name('devis');
+Route::get('/devis', [DevisController::class, 'index'])->middleware(['auth'])->name('devis');
+Route::post('/devis', [DevisController::class, 'store']);
 
 Route::get('/mon-panier', [CartController::class, 'index'])->middleware(['auth'])->name('cart');
 Route::post('/panier/ajouter', [CartController::class, 'store'])->middleware(['auth'])->name('cart.store');

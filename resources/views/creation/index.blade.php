@@ -4,11 +4,13 @@
 
 @section('content')
 
+
+<div class="mb-10 mt-20 flex justify-center font-bold text-2xl">Création</div>
 <div class="flex w-4/5 m-auto flex-wrap justify-center">
 
     @foreach ($creations as $product)
 
-        <div class="a bg-white min-h-64 w-1/4 mx-3 my-2">
+        <div class="a bg-white min-h-64 w-1/4 mx-3 my-2 text-black">
             <div>
                 <img src=" {{ $product->cover}} " alt="">
             </div>
