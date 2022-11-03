@@ -22,45 +22,45 @@
 
     
 
-<div class="flex flex-col bg-purple-300 justify-between min-h-screen">
-    <div class="bg-purple-300 h-20 flex justify-evenly items-center border-b-2 border-black">
+<div class="flex flex-col bg-black text-white  min-h-screen">
+    <div class="bg-black h-20 flex justify-evenly items-center border-b-2 border-orange-500">
 
         <div>
-            <a href="{{ route('home') }}">Accueil</a>
+            <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('home') }}">Accueil</a>
             
             
         </div>
 
         <div>
-            <a href="{{ route('Apropos') }}">A propos</a>
+            <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('Apropos') }}">A propos</a>
         </div>
         
         <div>
-            <img class="w-32 h-32" src="{{ asset('storage/public/logo/logo_black_mode_.png') }}" alt="">
+            <img class="w-32 h-32 relative top-8 z-10" src="{{ asset('storage/public/logo/logo_black_mode_.png') }}" alt="">
         </div>
 
         <div>
-            <a href="{{ route('cart') }}">Panier <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{ Cart::count() }}</span></a>
+            <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('cart') }}">Panier <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{ Cart::count() }}</span></a>
         </div>
     
         
         @auth
             @if (Auth::user()->is_admin)
             <div>
-                <a href="{{ Route('admin')}}">{{ Auth::user()->name }}</a>
-                <a href="{{ Route('logout')}}">Deconnexion</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ Route('admin')}}">{{ Auth::user()->name }}</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ Route('logout')}}">Deconnexion</a>
             </div>
             @else
             <div>
-                <a href="{{ route('user', $user)}}">{{ Auth::user()->name }}</a>
-                <a href="{{ Route('logout')}}">Deconnexion</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('user', $user)}}">{{ Auth::user()->name }}</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ Route('logout')}}">Deconnexion</a>
             </div>
             @endif
             
         @else
             <div>
-                <a href="{{ route('login') }}">Connexion</a>
-                <a href="{{ route('register') }}">Inscription</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('login') }}">Connexion</a>
+                <a class="p-3 border-2 border-black rounded-lg hover:border-orange-500 hover:border-2 hover:text-orange-500" href="{{ route('register') }}">Inscription</a>
             </div>
         @endauth
     </div>
@@ -85,7 +85,7 @@
     
     
     
-    <div class="bg-purple-300 h-20 flex justify-between items-center border-t-2 border-black">
+    <div class="bg-black h-20 flex justify-between items-center border-t-2 border-orange-500">
         footer
     </div>
 
