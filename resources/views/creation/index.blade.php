@@ -10,12 +10,12 @@
 
     @foreach ($creations as $product)
 
-        <div class="a bg-white min-h-64 w-1/4 mx-3 my-2 text-black">
+        <div class="carte bg-white min-h-64 w-1/4 mx-3 my-2 text-black rounded-lg hover:scale-110">
             <div>
-                <img src=" {{ $product->cover}} " alt="">
+                <img class="rounded-t-lg" src=" {{ $product->cover}} " alt="">
             </div>
             <div>
-                <h1 class="m-3"><a href="{{ route('creations.show', $product) }}">{{$product->Name}} </a> </h1>
+                <h1 class="nomproduit m-3"><a href="{{ route('creations.show', $product) }}">{{$product->Name}} </a> </h1>
                 <p class="flex justify-end m-3"> {{$product->Price / 100}} €</p>
             </div>
         </div>
@@ -27,5 +27,17 @@
 
 
 {{ $creations->links()}}
+
+@endsection
+
+
+@section('extra-style')
+<style>
+    .carte:hover .nomproduit {
+        color:blue
+    }
+
+
+</style>
 
 @endsection
