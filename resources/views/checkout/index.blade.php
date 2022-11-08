@@ -12,24 +12,33 @@
 
 @section('content')
 
-    <h1>Page de Paiement</h1>
+    <h1 class="my-20 mx-auto font-bold text-2xl">Page de Paiement</h1>
 
 
-    <div >
-        <div >
-            <form action=" {{ route('checkout.store') }}" method="POST" id="payment-form" classe="my-4">
-                @csrf
-                <div id="card-element">
-                   
-                <!-- Elements will create input elements here -->
-                </div>
+    <div class="w-2/4 bg-white m-auto p-5 rounded-lg mb-10">
 
-                <!-- We'll put the error messages in this element -->
-                <div id="card-errors" role="alert"></div>
-
-                <button classe="mt-2" id="submit">Procéder au paiement ( {{ getPrice(Cart::total()) }} )</button>
-            </form>
+        <div class="text-blue-800 font-bold text-2xl mb-5">
+            Votre Carte
         </div>
+        
+        <form action=" {{ route('checkout.store') }}" method="POST" id="payment-form" classe="my-4">
+            @csrf
+
+            
+            <div id="card-element" class="text-black border-2 border-black">
+                
+            <!-- Elements will create input elements here -->
+            </div>
+
+            <!-- We'll put the error messages in this element -->
+            <div class="text-red" id="card-errors" role="alert"></div>
+
+            <button id="submit" class="text-white bg-blue-800 rounded-lg p-3 mt-3 border-2 border-blue-800 hover:bg-white hover:text-blue-800">Procéder au paiement ( {{ getPrice(Cart::total()) }} ) </button>
+
+        </form>
+
+        
+    
     </div>
 @endsection
 

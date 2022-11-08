@@ -25,7 +25,7 @@
 
     
 
-<div class="flex flex-col bg-black text-white  min-h-screen">
+<div class="flex flex-col bg-black text-white">
     <div class="bg-black h-20 flex justify-evenly items-center border-b-2 border-orange-500">
 
         <div class="hover:-rotate-6">
@@ -39,7 +39,7 @@
         </div>
         
         <div>
-            <img class="w-32 h-32 relative top-8 z-10" src="{{ asset('storage/public/logo/logo_black_mode_.png') }}" alt="">
+            <img class="w-24 h-24 relative  z-10" src="{{ asset('storage/public/logo/logo_sans_titre_white_.png') }}" alt="">
         </div>
 
         <div class="hover:-rotate-6">
@@ -87,7 +87,7 @@
     </div>
     
     @if (session('success'))
-        <div>
+        <div class="bg-green-500 mt-10 mb-10 w-1/4 mx-auto rounded-lg flex justify-center">
             {{ session('success') }}
         </div>
     @endif
@@ -95,10 +95,12 @@
 
 
     @if (session('danger'))
-        <div>
+        <div class="bg-red-700 mt-10 mb-10 w-1/4 mx-auto flex justify-center rounded-lg">
             {{ session('danger') }}
         </div>
     @endif
+
+
     
     @yield('content')
 
@@ -106,8 +108,28 @@
     
     
     
-    <div class="bg-black h-20 flex justify-between items-center border-t-2 border-orange-500">
-        footer
+    <div class="bg-black pt-12 flex justify-evenly items-center border-t-2 border-orange-500">
+        <div>
+            <ul>
+                <li class="mb-5"><a href="">Découvrez notre page Facebook !</a></li>
+                <li class="mb-5"><a href="">Suivez-nous sur Instagram !</a></li>
+                <li class="mb-5"><a href="">Suivez-nous sur Twitter !</a></li>
+                <li class="mb-5"><a href="">Suivez-nous sur Discord !</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <img class="w-52 h-52 relative  z-10" src="{{ asset('storage/public/logo/logo_black_mode_.png') }}" alt="">
+        </div>
+
+        <div>
+            <ul>
+                <li class="mb-5">Tel : 07.57.83.48.69</li>
+                <li class="mb-5">Email : vkg.maker3d@gmail.com</li>
+                <li class="mb-5">Mention Légale</li>
+                <li class="mb-5">Propulsé par Boxydev</li>
+            </ul>
+        </div>
     </div>
 
 </div>
