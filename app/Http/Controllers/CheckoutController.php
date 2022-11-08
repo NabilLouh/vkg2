@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use DateTime;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -115,6 +116,16 @@ class CheckoutController extends Controller
         
     }
 
+    public function lastorder()
+    {
+        return view('checkout.lastorder', [
+            'lastorder' => Order::where('user_id', '=', Auth::user()->id)
+                ->orderBy('id', 'desc')
+                ->take(1)
+                ->get(),
+        ]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -160,3 +171,5 @@ class CheckoutController extends Controller
         //
     }
 }
+
+
