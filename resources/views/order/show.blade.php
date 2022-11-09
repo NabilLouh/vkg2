@@ -7,19 +7,18 @@
 
 <div>
 
-    <h1>Les commandes</h1>
+    <h1 class="mt-5 w-52 m-auto mb-5 font-bold text-xl">Les commandes</h1>
 
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Produit commander</th>
-                <th>Prix Total</th>
-                <th>Client</th>
-                <th>Date</th>
-                <th>Expédition</th>
-                <th></th>
+    <table class="w-4/5 m-auto border-2 border-black">
+        <thead class="border-2 border-black">
+            <tr >
+                <th class="w-1/10 border-2 border-black px-2 hover:bg-slate-400">ID</th>
+                <th class="w-2/5 border-2 border-black hover:bg-slate-400">Produit commander</th>
+                <th class="w-1/5 border-2 border-black hover:bg-slate-400">Prix Total</th>
+                <th class="w-1/5 border-2 border-black hover:bg-slate-400">Client</th>
+                <th class="w-1/5 border-2 border-black hover:bg-slate-400">Date</th>
+
             </tr>
         </thead>
 
@@ -28,9 +27,9 @@
         <tbody >
 
             @foreach ($orders as $order)
-                <tr>
-                    <th>{{ $order->id }}</th>
-                    <td>
+                <tr class="">
+                    <th class="text-center border border-black hover:bg-slate-400">{{ $order->id }}</th>
+                    <td class="text-center border border-black hover:bg-slate-400">
                         <ul>
 
                             @foreach (unserialize($order->products) as $product)
@@ -39,9 +38,9 @@
 
                         </ul>
                     </td>
-                    <td>{{ getPrice($order->amount)}}</td>
-                    <td> {{ $order->user->name }}</td>
-                    <td> {{ $order->payment_created_at}}</td>
+                    <td class="text-center border border-black hover:bg-slate-400">{{ getPrice($order->amount)}}</td>
+                    <td class="text-center border border-black hover:bg-slate-400"> {{ $order->user->name }}</td>
+                    <td class="text-center border border-black hover:bg-slate-400"> {{ $order->payment_created_at}}</td>
                     
                 </tr>
                 

@@ -4,42 +4,42 @@
 
 @section('content')
 
-<h1 class="m-3">Creer un Produit</h1>
+<h1 class="mt-5 w-52 m-auto mb-5 font-bold text-xl ">Creer un Produit</h1>
 
-<ul>
+<ul class="bg-red-500 w-2/3 m-auto rounded-lg">
     @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
+        <li class="pt-2 pl-2">{{$error}}</li>
     @endforeach
 </ul>
 
 
-<form action="" method="post" enctype="multipart/form-data">
+<form class="ml-5" action="" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="m-3">
-        <label for="Name">Nom :</label>
+        <label class="mr-11" for="Name">Nom :</label>
         <input type="text"  name="Name" id="Name" value="{{ old('Name') }}">
     </div>
 
     <div class="m-3">
-        <label for="Description">Description :</label>
+        <label class="mr" for="Description">Description :</label>
         <input type="text"  name="Description" id="Description" value="{{ old('Description') }}">
     </div>
 
     <div class="m-3">
-        <label for="Price">Prix :</label>
+        <label class="mr-14" for="Price">Prix :</label>
         <input type="number"  name="Price" id="Price" value="{{ old('Price') }}" min="99" max="3000">
     </div>
 
 
 
     <div class="m-3">
-        <label for="cover">Cover : </label>
+        <label class="mr-10" for="cover">Cover : </label>
         <input type="file" name="cover" id="cover" value="{{ old('cover') }}">
     </div>
 
     <div>
-        <label for="is_creation">Type : </label>
+        <label class="mr-14" for="is_creation">Type : </label>
         <select name="is_creation" id="is_creation">
             <option value="0">Produit</option>
             <option value="1">Creation</option>
@@ -47,7 +47,7 @@
     </div>
 
 
-    <button class="m-3 bg-green-700 p-3">Ajouter</button>
+    <button class="rounded-lg m-3 bg-green-700 p-3 border-2 border-green-700 hover:bg-slate-300">Ajouter</button>
 
 </form>
 

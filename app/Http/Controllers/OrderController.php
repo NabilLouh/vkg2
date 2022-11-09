@@ -20,7 +20,7 @@ class OrderController extends Controller
 
   public function showhisto(User $user)
   {
-        return view('order.show', [
+        return view('order.histo', [
             "orders" => Order::where('user_id', '=', "$user->id")
                 ->where("is_shipped", "=", 1 )
                 ->get()
